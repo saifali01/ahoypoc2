@@ -1,0 +1,12 @@
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\AhoyDataAccess.dll.config
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\AhoyDataAccess.dll
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\AhoyDataAccess.pdb
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\obj\Debug\AhoyDataAccess.csprojAssemblyReference.cache
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\obj\Debug\AhoyDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\obj\Debug\AhoyDataAccess.csproj.CopyComplete
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\obj\Debug\AhoyDataAccess.dll
+C:\Users\Dell\source\repos\AhoyAssessment\AhoyDataAccess\obj\Debug\AhoyDataAccess.pdb

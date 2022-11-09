@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHOYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BuildingName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UnitNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Unit_details">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Unit_Id" Type="int" />
+  </EntityType>
+  <Association Name="FK__Unit_deta__Unit___3D5E1FD2">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="Unit_details" Type="Self.Unit_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Unit_details">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AHOYModelStoreContainer">
+    <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unit_details" EntityType="Self.Unit_details" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Unit_deta__Unit___3D5E1FD2" Association="Self.FK__Unit_deta__Unit___3D5E1FD2">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Unit_details" EntitySet="Unit_details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

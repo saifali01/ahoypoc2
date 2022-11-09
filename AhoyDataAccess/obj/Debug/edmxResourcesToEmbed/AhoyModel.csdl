@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHOYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BuildingName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Unit_details" Relationship="Self.FK__Unit_deta__Unit___3D5E1FD2" FromRole="Unit" ToRole="Unit_details" />
+  </EntityType>
+  <EntityType Name="Unit_details">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK__Unit_deta__Unit___3D5E1FD2" FromRole="Unit_details" ToRole="Unit" />
+  </EntityType>
+  <Association Name="FK__Unit_deta__Unit___3D5E1FD2">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="Unit_details" Type="Self.Unit_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Unit_details">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AHOYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <EntitySet Name="Unit_details" EntityType="Self.Unit_details" />
+    <AssociationSet Name="FK__Unit_deta__Unit___3D5E1FD2" Association="Self.FK__Unit_deta__Unit___3D5E1FD2">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Unit_details" EntitySet="Unit_details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

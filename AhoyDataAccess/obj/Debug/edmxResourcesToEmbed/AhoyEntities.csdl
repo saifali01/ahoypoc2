@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHOYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Booking__RoomId__48CFD27E" FromRole="Booking" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit_Id" Type="Int32" />
+    <Property Name="RoomStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__RoomId__48CFD27E" FromRole="Room" ToRole="Booking" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK__Room__Unit_Id__4222D4EF" FromRole="Room" ToRole="Unit" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UnitDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PriceUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Facilities" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UnitLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Decimal" Precision="9" Scale="6" />
+    <Property Name="Long" Type="Decimal" Precision="9" Scale="6" />
+    <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__Unit_Id__4222D4EF" FromRole="Unit" ToRole="Room" />
+  </EntityType>
+  <Association Name="FK__Booking__RoomId__48CFD27E">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Room__Unit_Id__4222D4EF">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="Unit_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AHOYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <AssociationSet Name="FK__Booking__RoomId__48CFD27E" Association="Self.FK__Booking__RoomId__48CFD27E">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Room__Unit_Id__4222D4EF" Association="Self.FK__Room__Unit_Id__4222D4EF">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
